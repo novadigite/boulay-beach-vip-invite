@@ -22,6 +22,7 @@ export default {
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
+          glow: "hsl(var(--primary-glow))",
         },
         secondary: {
           DEFAULT: "hsl(var(--secondary))",
@@ -38,6 +39,10 @@ export default {
         accent: {
           DEFAULT: "hsl(var(--accent))",
           foreground: "hsl(var(--accent-foreground))",
+        },
+        gold: {
+          DEFAULT: "hsl(var(--gold))",
+          foreground: "hsl(var(--gold-foreground))",
         },
         popover: {
           DEFAULT: "hsl(var(--popover))",
@@ -62,6 +67,24 @@ export default {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
+      },
+      backgroundImage: {
+        "gradient-sunset": "var(--gradient-sunset)",
+        "gradient-ocean": "var(--gradient-ocean)", 
+        "gradient-hero": "var(--gradient-hero)",
+      },
+      boxShadow: {
+        "premium": "var(--shadow-premium)",
+        "glow": "var(--shadow-glow)",
+        "subtle": "var(--shadow-subtle)",
+      },
+      transitionTimingFunction: {
+        "smooth": "var(--transition-smooth)",
+        "bounce": "var(--transition-bounce)",
+      },
+      fontFamily: {
+        "display": ["'Playfair Display'", "serif"],
+        "body": ["'Inter'", "sans-serif"],
       },
       keyframes: {
         "accordion-down": {
