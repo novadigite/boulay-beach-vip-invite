@@ -1,7 +1,37 @@
 import { Button } from "@/components/ui/button";
 import heroImage from "@/assets/hero-life-is-here.jpg";
+import { useState, useEffect } from "react";
 
 const Hero = () => {
+  const [timeLeft, setTimeLeft] = useState({
+    days: 0,
+    hours: 0,
+    minutes: 0,
+    seconds: 0
+  });
+
+  useEffect(() => {
+    // Set event date to 30 days from now for demo
+    const eventDate = new Date();
+    eventDate.setDate(eventDate.getDate() + 30);
+    
+    const timer = setInterval(() => {
+      const now = new Date().getTime();
+      const distance = eventDate.getTime() - now;
+      
+      if (distance > 0) {
+        setTimeLeft({
+          days: Math.floor(distance / (1000 * 60 * 60 * 24)),
+          hours: Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
+          minutes: Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)),
+          seconds: Math.floor((distance % (1000 * 60)) / 1000)
+        });
+      }
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, []);
+
   const scrollToReservation = () => {
     document.getElementById('reservation')?.scrollIntoView({ behavior: 'smooth' });
   };
@@ -34,8 +64,31 @@ const Hero = () => {
           {/* Subtitle */}
           <p className="text-xl md:text-2xl font-light leading-relaxed max-w-2xl mx-auto opacity-95">
             Une expérience unique entre luxe, plage et détente.<br />
-            <strong className="font-medium">Places limitées, réservez dès maintenant !</strong>
+            <strong className="font-medium">Places limitées – réservez vite !</strong>
           </p>
+          
+          {/* Countdown Timer */}
+          <div className="bg-black/30 backdrop-blur-sm rounded-xl p-6 border border-white/20 max-w-2xl mx-auto">
+            <p className="text-white/90 font-medium mb-4 text-lg">⏰ Temps restant pour réserver :</p>
+            <div className="grid grid-cols-4 gap-4 text-center">
+              <div className="bg-white/10 rounded-lg p-3 border border-white/20">
+                <div className="text-2xl md:text-3xl font-bold text-accent">{timeLeft.days}</div>
+                <div className="text-sm text-white/80">Jours</div>
+              </div>
+              <div className="bg-white/10 rounded-lg p-3 border border-white/20">
+                <div className="text-2xl md:text-3xl font-bold text-accent">{timeLeft.hours}</div>
+                <div className="text-sm text-white/80">Heures</div>
+              </div>
+              <div className="bg-white/10 rounded-lg p-3 border border-white/20">
+                <div className="text-2xl md:text-3xl font-bold text-accent">{timeLeft.minutes}</div>
+                <div className="text-sm text-white/80">Minutes</div>
+              </div>
+              <div className="bg-white/10 rounded-lg p-3 border border-white/20">
+                <div className="text-2xl md:text-3xl font-bold text-accent">{timeLeft.seconds}</div>
+                <div className="text-sm text-white/80">Secondes</div>
+              </div>
+            </div>
+          </div>
           
           {/* CTA Button */}
           <div className="pt-6">

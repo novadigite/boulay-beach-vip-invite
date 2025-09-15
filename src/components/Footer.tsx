@@ -18,6 +18,7 @@ const Footer = () => {
                 <p className="text-sm text-muted-foreground">
                   Boulay Beach Resort<br />
                   Île Boulay<br />
+                  06 BP 2598 ABIDJAN 06<br />
                   Côte d'Ivoire
                 </p>
               </CardContent>

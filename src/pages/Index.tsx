@@ -3,6 +3,9 @@ import EventInfo from "@/components/EventInfo";
 import ReservationForm from "@/components/ReservationForm";
 import WhyJoin from "@/components/WhyJoin";
 import TrustSection from "@/components/TrustSection";
+import FAQ from "@/components/FAQ";
+import ChatAssistant from "@/components/ChatAssistant";
+import StickyTimer from "@/components/StickyTimer";
 import Footer from "@/components/Footer";
 
 const Index = () => {
@@ -13,7 +16,10 @@ const Index = () => {
       <WhyJoin />
       <ReservationForm />
       <TrustSection />
+      <FAQ />
+      <ChatAssistant />
       <Footer />
+      <StickyTimer />
     </main>
   );
 };

@@ -142,8 +142,8 @@ const ReservationForm = () => {
                 <Shield className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
                 <div className="text-sm">
                   <p className="text-muted-foreground">
-                    <strong className="text-foreground">Vos informations restent confidentielles.</strong><br />
-                    Confirmation instantanée par email. Aucune donnée ne sera partagée avec des tiers.
+                    <strong className="text-foreground">🔒 Confirmation instantanée – vos données sont sécurisées</strong><br />
+                    Aucune donnée ne sera partagée avec des tiers. Paiement 100% sécurisé.
                   </p>
                 </div>
               </div>

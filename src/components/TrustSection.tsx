@@ -93,6 +93,37 @@ const TrustSection = () => {
               </div>
             </CardContent>
           </Card>
+
+          {/* Review Platforms */}
+          <div className="flex justify-center items-center gap-8 mt-12">
+            <div className="flex items-center gap-2 bg-card p-4 rounded-lg border border-border shadow-subtle">
+              <div className="w-8 h-8 bg-blue-600 rounded flex items-center justify-center">
+                <span className="text-white font-bold text-sm">f</span>
+              </div>
+              <div>
+                <div className="font-semibold text-sm">Facebook</div>
+                <div className="text-xs text-muted-foreground">4.8/5 ⭐</div>
+              </div>
+            </div>
+            <div className="flex items-center gap-2 bg-card p-4 rounded-lg border border-border shadow-subtle">
+              <div className="w-8 h-8 bg-green-600 rounded flex items-center justify-center">
+                <span className="text-white font-bold text-sm">T</span>
+              </div>
+              <div>
+                <div className="font-semibold text-sm">TripAdvisor</div>
+                <div className="text-xs text-muted-foreground">4.9/5 ⭐</div>
+              </div>
+            </div>
+            <div className="flex items-center gap-2 bg-card p-4 rounded-lg border border-border shadow-subtle">
+              <div className="w-8 h-8 bg-red-600 rounded flex items-center justify-center">
+                <span className="text-white font-bold text-sm">G</span>
+              </div>
+              <div>
+                <div className="font-semibold text-sm">Google</div>
+                <div className="text-xs text-muted-foreground">4.7/5 ⭐</div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
