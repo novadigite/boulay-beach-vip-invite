@@ -5,6 +5,7 @@ import WhyJoin from "@/components/WhyJoin";
 import TrustSection from "@/components/TrustSection";
 import FAQ from "@/components/FAQ";
 import ChatAssistant from "@/components/ChatAssistant";
+import FloatingChatbot from "@/components/FloatingChatbot";
 import StickyTimer from "@/components/StickyTimer";
 import Footer from "@/components/Footer";
 
@@ -20,6 +21,7 @@ const Index = () => {
       <ChatAssistant />
       <Footer />
       <StickyTimer />
+      <FloatingChatbot />
     </main>
   );
 };
