@@ -40,7 +40,7 @@ const ReservationForm = () => {
           email: formData.email,
           phone: formData.phone,
           eventId: '1704653978939', // Replace with your actual event ID
-          ticketClassId: null // Optional ticket class ID
+          ticketClassId: 2957319883 // Optional ticket class ID
         }
       });
 
