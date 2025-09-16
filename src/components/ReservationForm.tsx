@@ -4,7 +4,8 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
-import { Sparkles, Shield } from "lucide-react";
+import { Sparkles, Shield, Ticket } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
 
 const ReservationForm = () => {
   const [formData, setFormData] = useState({
@@ -25,18 +26,52 @@ const ReservationForm = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    if (!isFormValid) return;
+
     setIsSubmitting(true);
     
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    
-    toast({
-      title: "Réservation confirmée ! 🎉",
-      description: "Vous recevrez un email de confirmation sous peu. À bientôt au Boulay Beach Resort !",
-    });
-    
-    setFormData({ fullName: '', email: '', phone: '' });
-    setIsSubmitting(false);
+    try {
+      console.log('Submitting reservation:', formData);
+
+      const { data, error } = await supabase.functions.invoke('eventbrite-reservation', {
+        body: {
+          fullName: formData.fullName,
+          email: formData.email,
+          phone: formData.phone,
+          eventId: 'YOUR_EVENTBRITE_EVENT_ID', // Replace with your actual event ID
+          ticketClassId: null // Optional ticket class ID
+        }
+      });
+
+      if (error) {
+        console.error('Supabase function error:', error);
+        throw error;
+      }
+
+      console.log('Reservation response:', data);
+
+      if (data?.success) {
+        toast({
+          title: "🎟️ Réservation confirmée !",
+          description: data.message || "Votre ticket a été généré et envoyé à votre email.",
+        });
+        
+        // Reset form
+        setFormData({ fullName: '', email: '', phone: '' });
+      } else {
+        throw new Error(data?.message || "Erreur lors de la réservation");
+      }
+    } catch (error: any) {
+      console.error('Reservation error:', error);
+      toast({
+        title: "Erreur",
+        description: error.message || "⚠️ Une erreur est survenue, merci de réessayer ou de nous contacter.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const isFormValid = formData.fullName && formData.email && formData.phone;
@@ -126,12 +161,12 @@ const ReservationForm = () => {
                   {isSubmitting ? (
                     <>
                       <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin mr-2" />
-                      Confirmation en cours...
+                      Génération du ticket...
                     </>
                   ) : (
                     <>
-                      <Sparkles className="w-5 h-5 mr-2" />
-                      Confirmer ma réservation VIP
+                      <Ticket className="w-5 h-5 mr-2" />
+                      Confirmer ma réservation
                     </>
                   )}
                 </Button>
