@@ -39,7 +39,7 @@ const ReservationForm = () => {
           fullName: formData.fullName,
           email: formData.email,
           phone: formData.phone,
-          eventId: 'YOUR_EVENTBRITE_EVENT_ID', // Replace with your actual event ID
+          eventId: '1704653978939', // Replace with your actual event ID
           ticketClassId: null // Optional ticket class ID
         }
       });
